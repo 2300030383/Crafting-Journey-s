@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Registration | Crafting Journeys</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      padding: 0;
+
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+
+                  url('https://images.unsplash.com/photo-1521747116042-5f47e5e1e3f2?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjEyOXwwfDF8c2VhcmNofDJ8fGJ1c3xlbnwwfDB8fHwxNjg2ODg4NjQ5&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
+
+      font-family: 'Poppins', sans-serif;
+
+      color: white;
+
+      min-height: 100vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      animation: fadeIn 1.5s ease;
+
+    }
+
+
+
+    @keyframes fadeIn {
+
+      from { opacity: 0; }
+
+      to { opacity: 1; }
+
+    }
+
+
+
+    .registration-container {
+
+      background: rgba(255, 255, 255, 0.2);
+
+      padding: 40px;
+
+      border-radius: 20px;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      text-align: center;
+
+      backdrop-filter: blur(10px);
+
+      width: 100%;
+
+      max-width: 400px;
+
+    }
+
+
+
+    .registration-container h2 {
+
+      margin-bottom: 20px;
+
+      font-size: 2rem;
+
+    }
+
+
+
+    .registration-container input {
+
+      width: 100%;
+
+      padding: 15px;
+
+      margin: 10px 0;
+
+      border-radius: 8px;
+
+      border: none;
+
+      outline: none;
+
+      font-size: 1rem;
+
+      background: rgba(255,255,255,0.3);
+
+      color: white;
+
+    }
+
+
+
+    .registration-container input::placeholder {
+
+      color: #eee;
+
+    }
+
+
+
+    .registration-container button {
+
+      width: 100%;
+
+      padding: 15px;
+
+      margin-top: 20px;
+
+      background: #ff416c;
+
+      color: white;
+
+      font-weight: bold;
+
+      border: none;
+
+      border-radius: 8px;
+
+      font-size: 1rem;
+
+      cursor: pointer;
+
+      transition: background 0.3s ease;
+
+    }
+
+
+
+    .registration-container button:hover {
+
+      background: #ff4b2b;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <div class="registration-container">
+
+    <h2>Register for Crafting Journeys</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <input type="password" id="password" placeholder="Enter your password">
+
+    <button onclick="registerUser()">Register</button>
+
+  </div>
+
+
+
+  <script>
+
+    function registerUser() {
+
+      const name = document.getElementById('name').value;
+
+      const email = document.getElementById('email').value;
+
+      const password = document.getElementById('password').value;
+
+
+
+      if (name && email && password) {
+
+        alert("Registration Successful! You can now login.");
+
+        // You could also store this information in a backend or local storage
+
+        // Redirect to login or available buses
+
+        window.location.href = "/JourneyPay"; 
+
+      } else {
+
+        alert("Please fill all the fields!");
+
+      }
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

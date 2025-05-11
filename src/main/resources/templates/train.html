@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Train</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      background: url('images/trainbg.jpg') no-repeat center center fixed; /* Static background image */
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 36px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+    }
+
+    .train-booking-container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 20px;
+      width: 400px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      font-size: 16px;
+      color: #333;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      background: #e3e3e3;
+      outline: none;
+    }
+
+    .book-btn {
+      background: #ff5722;
+      color: white;
+      padding: 15px;
+      border: none;
+      width: 100%;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .book-btn:hover {
+      background: #e64a19;
+    }
+
+    .train-info {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .train-info p {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Book Your Train 🚅</h1>
+  
+  <div class="train-booking-container">
+    <div class="form-group">
+      <input type="text" placeholder="Enter Arrival Station" id="arrivalStation" required>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Enter Departure Station" id="departureStation" required>
+    </div>
+    <div class="form-group">
+      <input type="date" id="travelDate" required>
+    </div>
+    <div class="form-group">
+      <select id="classType" required>
+        <option value="">Select Class</option>
+        <option value="First Class">First Class</option>
+        <option value="Second Class">Second Class</option>
+        <option value="Sleeper Class">Sleeper Class</option>
+      </select>
+    </div>
+    <a href="/availabletrains" class="book-btn">Book Train</a>
+
+    <div class="train-info" id="trainInfo" style="display: none;">
+      <p>Train: <span id="trainDetails"></span></p>
+      <p>Departure: <span id="departureDetails"></span></p>
+      <p>Arrival: <span id="arrivalDetails"></span></p>
+      <p>Class: <span id="classDetails"></span></p>
+      <p>Travel Date: <span id="dateDetails"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function bookTrain() {
+      const trainName = document.getElementById('trainName').value;
+      const departureStation = document.getElementById('departureStation').value;
+      const arrivalStation = document.getElementById('arrivalStation').value;
+      const travelDate = document.getElementById('travelDate').value;
+      const classType = document.getElementById('classType').value;
+
+      if (trainName && departureStation && arrivalStation && travelDate && classType) {
+        document.getElementById('trainDetails').textContent = trainName;
+        document.getElementById('departureDetails').textContent = departureStation;
+        document.getElementById('arrivalDetails').textContent = arrivalStation;
+        document.getElementById('classDetails').textContent = classType;
+        document.getElementById('dateDetails').textContent = travelDate;
+
+        document.getElementById('trainInfo').style.display = 'block';
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
+</body>
+</html>

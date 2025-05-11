@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Booked - Crafting Journeys</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .ticket-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .ticket-info {
+      margin-bottom: 20px;
+      color: #555;
+      opacity: 0;
+      animation: showDetails 1s ease-in-out forwards;
+    }
+
+    @keyframes showDetails {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .ticket-info span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .ticket-info p {
+      margin: 10px 0;
+    }
+
+    .ticket-info .price {
+      font-size: 18px;
+      color: #ff5722;
+      font-weight: bold;
+    }
+
+    .ticket-info .total-price {
+      font-size: 22px;
+      color: #ff5722;
+      font-weight: bold;
+    }
+
+    .customer-details {
+      margin: 20px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .customer-details span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .back-btn {
+      background: #ff5722;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background: #e64a19;
+    }
+
+    .loading {
+      font-size: 18px;
+      color: #555;
+      margin-top: 20px;
+      opacity: 0;
+      animation: loading 2s ease-in-out infinite;
+    }
+
+    @keyframes loading {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Ticket Booked - Crafting Journeys</h1>
+
+  <div class="ticket-container">
+    <!-- Customer Details -->
+    <div class="customer-details">
+      <p><span>Name:</span></p>
+      <p><span>Email:</span> </p>
+      <p><span>Phone:</span> </p>
+    </div>
+
+    <div class="ticket-info" id="ticketInfo">
+      <p><span>Bus Name:</span> Orange Travels</p>
+      <p><span>Departure:</span> 08:00 AM</p>
+      <p><span>Arrival:</span> 05:00 PM</p>
+      <p><span>Price per Seat:</span> ₹1200</p>
+      <p class="price" id="totalPrice">Total Price: ₹1200</p>
+    </div>
+
+    <div class="loading" id="loadingText">Processing your booking...</div>
+    <button class="back-btn" onclick="window.location.href='/home'">Back to home</button>
+  </div>
+
+  <script>
+    // Ensure the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Simulating dynamic price calculation and animation
+      let basePrice = 1200; // Static price for the demo
+
+      // Simulating some dynamic factors (e.g., discounts, added services)
+      let discount = 0; // No discount initially
+      let addedServices = 0; // No added services for now
+
+      // Calculate total price
+      let totalPrice = basePrice - discount + addedServices;
+
+      // Show the total price dynamically
+      const totalPriceElement = document.getElementById('totalPrice');
+      if (totalPriceElement) {
+        totalPriceElement.innerHTML = 'Total Price: ₹' + totalPrice;
+      }
+
+      // Simulate a slight delay for the ticket info to show up after payment
+      setTimeout(() => {
+        document.getElementById('ticketInfo').style.opacity = '1';
+        document.getElementById('loadingText').style.opacity = '0'; // Hide loading text after 2 seconds
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

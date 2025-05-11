@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Activities Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+    button {
+      padding: 12px 24px;
+      background-color: #ff416c;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .results {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background: #333;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+    }
+    a {
+      color: #4dd0e1;
+      text-decoration: none;
+    }
+
+    /* New hero background style */
+    .hero {
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1470&q=80'); /* Replace this URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+      position: relative;
+    }
+  </style>
+</head>
+<body class="hero">
+
+  <h1>Discover Local Fun Places</h1>
+  <p>Click the button to find interesting places near you!</p>
+  <button onclick="findPlaces()">Find Activities</button>
+
+  <div class="results" id="results"></div>
+
+  <script>
+    function findPlaces() {
+      if (!navigator.geolocation) {
+        alert("Your browser does not support Geolocation.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        const radius = 10000; // 10 km
+        const url = `https://en.wikipedia.org/w/api.php?` +
+          `action=query&format=json&origin=*&` +
+          `list=geosearch&gscoord=${lat}|${lon}&gsradius=${radius}&gslimit=10`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+        const places = data.query.geosearch;
+
+        const container = document.getElementById("results");
+        container.innerHTML = "";
+
+        if (places.length === 0) {
+          container.innerHTML = "<p>No places found nearby.</p>";
+          return;
+        }
+
+        places.forEach(place => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = ` 
+            <h3>${place.title}</h3>
+            <p>Distance: ${(place.dist / 1000).toFixed(2)} km</p>
+            <a href="https://en.wikipedia.org/?curid=${place.pageid}" target="_blank">Read More</a>
+          `;
+          container.appendChild(card);
+        });
+      }, () => {
+        alert("Could not get your location.");
+      });
+    }
+  </script>
+
+</body>
+</html>

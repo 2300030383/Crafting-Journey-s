@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bus Booking | Crafting Journeys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .booking-container {
+      background: rgba(255,255,255,0.1);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 0px 20px rgba(255,255,255,0.3);
+      text-align: center;
+      animation: popIn 1.5s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .booking-container h2 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #ffda79;
+    }
+
+    .booking-container input {
+      width: 250px;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.3);
+      color: white;
+    }
+
+    .booking-container input::placeholder {
+      color: #eee;
+    }
+
+    .booking-container button {
+      width: 270px;
+      padding: 15px;
+      margin-top: 20px;
+      background: #ff416c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .booking-container button:hover {
+      background: #ff4b2b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="booking-container">
+    <h2>Book Your Bus 🚍</h2>
+    <input type="text" id="source" placeholder="Enter Source">
+    <br>
+    <input type="text" id="destination" placeholder="Enter Destination">
+    <br>
+    <button onclick="searchBuses()">Search Buses</button>
+  </div>
+
+  <script>
+    function searchBuses() {
+      const src = document.getElementById('source').value;
+      const dest = document.getElementById('destination').value;
+      
+      if(src && dest) {
+        window.location.href = "/availableBuses"; // Redirect
+      } else {
+        alert("Please enter both Source and Destination!");
+      }
+    }
+  </script>
+
+</body>
+</html>

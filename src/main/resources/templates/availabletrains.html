@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Trains - Crafting Journeys</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      background-color: #f3f3f3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #fff;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .train-card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
+      width: 90%;
+      margin: 20px 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .train-card h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .train-card p {
+      font-size: 18px;
+    }
+
+    .train-card .btn-book {
+      background-color: #ff5722;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .train-card .btn-book:hover {
+      background-color: #e64a19;
+    }
+
+    .train-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      animation: backgroundAnimation 10s infinite alternate;
+    }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background-image: url('https://www.w3schools.com/w3images/train.jpg');
+      }
+      50% {
+        background-image: url('https://www.w3schools.com/w3images/forest.jpg');
+      }
+      100% {
+        background-image: url('https://www.w3schools.com/w3images/mountains.jpg');
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .train-container {
+      width: 80%;
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .train-card-container {
+      width: 30%;
+      margin: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+      .train-card-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="train-background"></div>
+
+  <h1>Available Trains for Your Journey</h1>
+
+  <div class="train-container">
+    <!-- Train Card 1 -->
+    <div class="train-card-container">
+      <div class="train-card">
+        <h2>Express Train - 123</h2>
+        <p><strong>Departure:</strong> City A - 8:00 AM</p>
+        <p><strong>Arrival:</strong> City B - 2:00 PM</p>
+        <p><strong>Class:</strong> First Class</p>
+       <a href="/JourneyPay" class="btn-book">Book Now</a>
+
+      </div>
+    </div>
+
+    <!-- Train Card 2 -->
+    <div class="train-card-container">
+      <div class="train-card">
+        <h2>Superfast Express - 456</h2>
+        <p><strong>Departure:</strong> City A - 10:00 AM</p>
+        <p><strong>Arrival:</strong> City B - 4:00 PM</p>
+        <p><strong>Class:</strong> Second Class</p>
+        <a href="/JourneyPay" class="btn-book">Book Now</a>
+              </div>
+    </div>
+
+    <!-- Train Card 3 -->
+    <div class="train-card-container">
+      <div class="train-card">
+        <h2>Luxury Train - 789</h2>
+        <p><strong>Departure:</strong> City A - 12:00 PM</p>
+        <p><strong>Arrival:</strong> City B - 6:00 PM</p>
+        <p><strong>Class:</strong> Sleeper Class</p>
+       <a href="/JourneyPay" class="btn-book">Book Now</a>
+      </div>
+    </div>
+
+
+  <script>
+    // Optional: Add interactivity (e.g., book now, etc.)
+    const buttons = document.querySelectorAll('.btn-book');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        alert('Train has been booked!');
+      });
+    });
+  </script>
+
+</body>
+</html>
